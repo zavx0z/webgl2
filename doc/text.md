@@ -1,0 +1,7 @@
+# Ресурсы
+- [Видео - Coding Adventure: Rendering Text](https://www.youtube.com/watch?v=SO83KQuuZvg)
+- [apple - TrueType Reference Manual](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa2lpd3lqWXJfNWdRUkZQbGplb1hJcFlwczVzZ3xBQ3Jtc0trWGcxOHhrT0pRdnVrN3IwQ0VjZ0tSUW41NlJwUGwtUzI0TXE1VndZWlNUU3Y3LUtrc0EtNDQzZ1dtaURLMjBBUk5vVlZaeGZIdDk4bmRQSjVNemc5anNwTnNTcXd2bjhKTmpNbDdYV19EaFg0cHd3QQ&q=https%3A%2F%2Fdeveloper.apple.com%2Ffonts%2FTrueType-Reference-Manual%2F&v=SO83KQuuZvg)
+- [microsoft - Resolution Independent Curve Rendering
+using
+Programmable Graphics Hardware](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbWRyTUNabWNubTc5WjU3NWhpSDVSUFN5VzRld3xBQ3Jtc0tra2RUWVFhU3BOTThXOExvMEJkNDNENURzUXdlN1RpRXU3ZmV5T2MzZjVwandmM1k4TVMtV1lHOVNGOGZ5UTdITDVETTE0NG1ETWRTY182ZlN2dkdRZkVucktGVFZjbHBKNFFIZ05zWGNRYnBzaFFBQQ&q=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fresearch%2Fwp-content%2Fuploads%2F2005%2F01%2Fp1000-loop.pdf&v=SO83KQuuZvg)
+- [GPU text rendering with vector textures](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqblNpY1V6a3Z4UFZ2X01DUVhpOWJsaHNiclBmd3xBQ3Jtc0tsUjJQM0JCNTdGY1VfR1lRWEwzdlh2M0NRSmtRaVZXaTVaUUFFWFdNanhzRlpIeWhieUZwc1JFQWFyUHp4SHc2dUxOVVptRHJtbDRRQThZM1FxMk13NWV2TWZqOVptbGkzdDJLSFpyN051cDhtdHRObw&q=https%3A%2F%2Fwdobbie.com%2Fpost%2Fgpu-text-rendering-with-vector-textures%2F&v=SO83KQuuZvg)
