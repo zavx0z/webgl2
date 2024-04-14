@@ -77,8 +77,8 @@ export function readGlyphData(buffer, glyfTable) {
   const xCoords = readCoordinates(dataView, allFlags, true)
   const yCoords = readCoordinates(dataView, allFlags, false)
 
-  const result = new Array()
-  for (var i = 0; i < xCoords.length; i++) result.push([xCoords[i], yCoords[i]])
+  const result = []
+  for (let i = 0; i < xCoords.length; i++) result.push([xCoords[i], yCoords[i]])
   return result
 }
 
