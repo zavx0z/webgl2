@@ -42,3 +42,28 @@ export const getContext = ({ canvas, debug = false }) => {
   }
   return gl
 }
+
+/** Установка размера холста и области просмотра WebGL2.
+ * @param {Object} options - Объект с параметрами
+ * @param {WebGL2RenderingContext} options.gl - WebGL контекст.
+ * @param {number} [options.width="100%"] - Ширина в пикселях (100% по умолчанию).
+ * @param {number} [options.height="100%"] - Высота в пикселях (100% по умолчанию).
+ * @param {number} [options.x=0] - Горизонтальное смещение (от левого нижнего угла холста).
+ * @param {number} [options.y=0] - Вертикальное смещение (от левого нижнего угла холста).
+ * @param {boolean} [options.debug=false] - Выводить отладочную информацию
+ */
+export const setSize = ({ gl, width, height, x = 0, y = 0, debug = false }) => {
+  const canvas = gl.canvas
+  if (canvas instanceof OffscreenCanvas) throw new Error("Получен OffscreenCanvas")
+  canvas.style.width = width ? width + "px" : "100%"
+  canvas.style.height = height ? height + "px" : "100%"
+  canvas.width = canvas.clientWidth
+  canvas.height = canvas.clientHeight
+  gl.viewport(x, y, canvas.clientWidth, canvas.clientHeight)
+  if (debug) {
+    console.log("============= РАЗМЕРЫ ОБЛАСТИ ПРОСМОТРА ===============")
+    console.log("Установлен размер холста", canvas.clientWidth, "x", canvas.clientHeight)
+    console.log("Установлено смещение области просмотра", x, "x", y)
+    console.log("Установлен размер области просмотра", gl.drawingBufferWidth, "x", gl.drawingBufferHeight)
+  }
+}

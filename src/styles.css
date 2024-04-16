@@ -10,6 +10,7 @@ body {
 }
 canvas {
   border: 1px solid #87ceeb;
+  box-sizing: border-box;
 }
 div {
   display: flex;
