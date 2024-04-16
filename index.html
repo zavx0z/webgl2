@@ -5,17 +5,7 @@
     <title>webgl2</title>
   </head>
   <link rel="stylesheet" href="src/styles.css" />
-  <script type="module" defer>
-    import { getCanvas, getContext, setSize, setBackgroundColor } from "./src/index.js"
-    try {
-      const canvas = getCanvas({ debug: true })
-      const gl = getContext({ canvas, debug: true })
-      setSize({ gl, debug: true })
-      setBackgroundColor({ gl, hex: "#1b2634", debug: true })
-    } catch ({ message }) {
-      console.error(message)
-    }
-  </script>
+  <script type="module" src="src/index.js" defer></script>
   <body>
     <div>
       <canvas></canvas>
