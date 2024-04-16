@@ -67,3 +67,29 @@ export const setSize = ({ gl, width, height, x = 0, y = 0, debug = false }) => {
     console.log("Установлен размер области просмотра", gl.drawingBufferWidth, "x", gl.drawingBufferHeight)
   }
 }
+
+/** Установка цвета фона области просмотра (viewport).
+ * WebGL2 ожидает цвета в формате RGBA, с каждым компонентом между 0.0 и 1.0,
+ * поэтому мы переводим переданный цвет из шестнадцатеричного формата в RGBA.
+ *
+ * Буфер цвета нужно очищать для избегания его переполнения
+ * и обеспечения корректного отображения новых объектов на сцене.
+ * @param {Object} options - Объект с параметрами
+ * @param {WebGL2RenderingContext} options.gl - WebGL2 контекст.
+ * @param {string} options.hex - Цвет в шестнадцатеричном формате, ожидается строка формата '#FFFFFF'.
+ * @param {boolean} [options.debug=false] - Выводить отладочную информацию
+ */
+export const setBackgroundColor = ({ gl, hex, debug }) => {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  const alpha = 1.0
+  gl.clearColor(r / 255, g / 255, b / 255, alpha)
+  gl.clear(gl.COLOR_BUFFER_BIT)
+  if (debug) {
+    console.log("============= ЦВЕТ ФОНА ===============")
+    console.log(`Цвет фона в шестнадцатеричном формате: ${hex}`)
+    console.log(`Цвет фона в формате RGBA: ${r}, ${g}, ${b}, ${alpha}`)
+    console.log(`Цвет фона в формате WebGL2: ${r.toFixed(2)}, ${g.toFixed(2)}, ${b.toFixed(2)}, ${alpha.toFixed(2)}`)
+  }
+}
