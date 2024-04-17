@@ -12,8 +12,9 @@
     </div>
 <!--    Вершинный шейдер-->
     <script id="vertex" type="x-shader/x-vertex">#version 300 es
+      in vec3 a_Position;
       void main(void) {
-          gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+          gl_Position = vec4(a_Position, 1.0);
           gl_PointSize = 44.44;
       }
     </script>

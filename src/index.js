@@ -1,5 +1,6 @@
 import configWebGLRenderingArea from "./viewport.js"
 import { domShaderSrc, createShader, createProgram } from "./shader.js"
+import { getAttributeLocation } from "./variable.js"
 
 const gl = configWebGLRenderingArea({ background: "#1b2634", debug: true })
 
@@ -15,5 +16,8 @@ const fragmentShader = createShader({ gl, type: gl.FRAGMENT_SHADER, src: fragmen
 const program = createProgram({ gl, vertexShader, fragmentShader, debug: true })
 gl.useProgram(program)
 
+// получение позиции атрибута в шейдерной программе
+const a_Position = getAttributeLocation({ gl, program, name: "a_Position" })
+
 // Нарисовать точку
-gl.drawArrays(gl.POINTS, 0, 1);
+gl.drawArrays(gl.POINTS, 0, 1)
