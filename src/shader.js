@@ -46,3 +46,34 @@ export const createShader = ({ gl, type, src, debug }) => {
 
   return shader
 }
+
+/** Связывает шейдеры вместе для создания шейдерной программы.
+ * @param {Object} options - Объект с параметрами
+ * @param {WebGL2RenderingContext} options.gl - Контекст WebGL2.
+ * @param {WebGLShader} options.vertexShader - Вершинный шейдер.
+ * @param {WebGLShader} options.fragmentShader - Фрагментный шейдер.
+ * @param {boolean} [options.debug=false] - Выводить отладочную информацию
+ * @returns {WebGLProgram} Программа шейдера.
+ * @exception {Error} Ошибка создания программы
+ */
+export const createProgram = ({ gl, vertexShader, fragmentShader, debug }) => {
+  if (debug) {
+    console.log("======================= PROGRAM =======================")
+    var startTime = performance.now()
+  }
+
+  const program = gl.createProgram()
+  gl.attachShader(program, vertexShader)
+  gl.attachShader(program, fragmentShader)
+  gl.linkProgram(program)
+
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    const errorLog = gl.getProgramInfoLog(program)
+    gl.deleteProgram(program)
+    throw new Error(`Ошибка связывания шейдерной программы: ${errorLog}`)
+  }
+
+  if (debug) console.log(`Шейдерная программа создана за ${performance.now() - startTime} мс.`)
+
+  return program
+}
