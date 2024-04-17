@@ -10,5 +10,21 @@
     <div>
       <canvas></canvas>
     </div>
+<!--    Вершинный шейдер-->
+    <script id="vertex" type="x-shader/x-vertex">#version 300 es
+      void main(void) {
+          gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+          gl_PointSize = 44.44;
+      }
+    </script>
+<!--    Фрагментный шейдер-->
+    <script id="fragment" type="x-shader/x-fragment">#version 300 es
+      // шейдеры фрагментов не имеют точности по умолчанию. highp - хорошее значение по умолчанию. Это означает "высокая точность".
+      precision highp float;
+      out vec4 outColor;
+      void main(void) {
+        outColor = vec4(0.529, 0.808, 0.922, 1.0);
+      }
+    </script>
   </body>
 </html>
