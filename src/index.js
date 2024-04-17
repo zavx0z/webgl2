@@ -1,6 +1,6 @@
 import configWebGLRenderingArea from "./viewport.js"
 import { domShaderSrc, createShader, createProgram } from "./shader.js"
-import { getAttributeLocation } from "./variable.js"
+import { getAttributeLocation, setAttributeVector } from "./variable.js"
 
 const gl = configWebGLRenderingArea({ background: "#1b2634", debug: true })
 
@@ -18,6 +18,8 @@ gl.useProgram(program)
 
 // получение позиции атрибута в шейдерной программе
 const a_Position = getAttributeLocation({ gl, program, name: "a_Position" })
+// передача вектора в атрибут шейдера
+setAttributeVector({ gl, location: a_Position, vectors: new Float32Array([-0.5, 0.5]) })
 
 // Нарисовать точку
 gl.drawArrays(gl.POINTS, 0, 1)
