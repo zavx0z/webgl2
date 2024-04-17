@@ -25,5 +25,10 @@ const a_PointSize = getAttributeLocation({ gl, program, name: "a_PointSize" })
 // передача значений с плавающей точкой в атрибут шейдера
 setAttributeFloat({ gl, location: a_PointSize, args: [44] })
 
+// получение ссылки на uniform-переменную
+const u_outColor = gl.getUniformLocation(program, "u_outColor");
+// передача значений в uniform-переменную
+gl.uniform4f(u_outColor, 0.529, 0.808, 0.922, 1.0);
+
 // нарисовать точку
 gl.drawArrays(gl.POINTS, 0, 1)
