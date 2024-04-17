@@ -13,9 +13,10 @@
 <!--    Вершинный шейдер-->
     <script id="vertex" type="x-shader/x-vertex">#version 300 es
       in vec3 a_Position;
+      in float a_PointSize;
       void main(void) {
-          gl_Position = vec4(a_Position, 1.0);
-          gl_PointSize = 44.44;
+        gl_Position = vec4(a_Position, 1.0);
+        gl_PointSize = a_PointSize;
       }
     </script>
 <!--    Фрагментный шейдер-->

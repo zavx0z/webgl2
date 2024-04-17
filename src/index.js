@@ -1,6 +1,6 @@
 import configWebGLRenderingArea from "./viewport.js"
 import { domShaderSrc, createShader, createProgram } from "./shader.js"
-import { getAttributeLocation, setAttributeVector } from "./variable.js"
+import { getAttributeLocation, setAttributeVector, setAttributeFloat } from "./variable.js"
 
 const gl = configWebGLRenderingArea({ background: "#1b2634", debug: true })
 
@@ -21,5 +21,9 @@ const a_Position = getAttributeLocation({ gl, program, name: "a_Position" })
 // передача вектора в атрибут шейдера
 setAttributeVector({ gl, location: a_Position, vectors: new Float32Array([-0.5, 0.5]) })
 
-// Нарисовать точку
+const a_PointSize = getAttributeLocation({ gl, program, name: "a_PointSize" })
+// передача значений с плавающей точкой в атрибут шейдера
+setAttributeFloat({ gl, location: a_PointSize, args: [44] })
+
+// нарисовать точку
 gl.drawArrays(gl.POINTS, 0, 1)

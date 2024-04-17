@@ -52,3 +52,38 @@ export const setAttributeVector = ({ gl, location, vectors }) => {
     else throw new Error("Массив vectors имеет неверный размер. Допускаются размеры 1, 2, 3, 4.")
   } else throw new Error("Параметр vectors должен быть массивом чисел или экземпляром Float32Array.")
 }
+
+/** Передача значений с плавающей точкой в атрибут шейдера.
+ * Принимает ссылку на переменную-атрибут и присваивает значения для её компонентов.
+ * В зависимости от количества аргументов, используются различные варианты gl.vertexAttrib{1|2|3|4}f.
+ *
+ * @param {Object} options - Параметры функции.
+ * @param {WebGL2RenderingContext} options.gl - Контекст WebGL2.
+ * @param {number} options.location - Позиция переменной-атрибута в шейдерной программе.
+ *        Должна быть меньше максимально допустимого количества атрибутов (часто 8 по умолчанию).
+ * @param {number[]} options.args - Аргументы, которые будут установлены для переменной-атрибута.
+ *        В зависимости от количества аргументов вызывается соответствующий метод из семейства gl.vertexAttrib,
+ *        позволяющий устанавливать значения отдельных или всех компонентов переменной-атрибута с авто-подстановкой недостающих компонентов.
+ *
+ *        Для 1 аргумента, используется gl.vertexAttrib1f, который устанавливает только первый компонент вектора,
+ *        оставляя второй и третий равными 0.0 и устанавливая четвёртый в 1.0.
+ *
+ *        Для 2 аргументов, используется gl.vertexAttrib2f, устанавливающий первые два компонента вектора,
+ *        с последующими значениями 0.0 и 1.0 для третьего и четвёртого.
+ *
+ *        Для 3 аргументов, используется gl.vertexAttrib3f, устанавливающий первые три компонента вектора, и четвертый заполняется 1.0
+ *
+ *        Для 4 аргументов, используется gl.vertexAttrib4f, устанавливающий все компоненты вектора.
+ * @returns {void}
+ * @throws {Error} Если location больше или равна максимально допустимому значению для атрибутов.
+ */
+export const setAttributeFloat = ({ gl, location, args }) => {
+  if (location >= gl.getParameter(gl.MAX_VERTEX_ATTRIBS))
+    throw new Error(`Ссылка на переменную-атрибут location=${location} недопустима.`)
+
+  if (args.length === 1) gl.vertexAttrib1f(location, args[0])
+  else if (args.length === 2) gl.vertexAttrib2f(location, args[0], args[1])
+  else if (args.length === 3) gl.vertexAttrib3f(location, args[0], args[1], args[2])
+  else if (args.length === 4) gl.vertexAttrib4f(location, args[0], args[1], args[2], args[3])
+  else throw new Error("Ошибка: vertexAttrib() не может принимать такое количество аргументов")
+}
