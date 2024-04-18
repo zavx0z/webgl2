@@ -19,5 +19,14 @@ gl.useProgram(program)
 // получение позиции атрибута в шейдерной программе
 const a_Position = getAttributeLocation({ gl, program, name: "a_Position" })
 
+const vertices = new Float32Array([0, 0])
+const positionBuffer = gl.createBuffer()
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
+
+// Настройка атрибутов вершин
+gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0)
+gl.enableVertexAttribArray(a_Position)
+
 // Нарисовать точку
 gl.drawArrays(gl.POINTS, 0, 1)
